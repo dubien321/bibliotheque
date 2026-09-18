@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails adhérent - BIBLIO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/forms.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <div class="app-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <a href="/pages/adherents/adherent.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Retour à la liste
+                    </a>
+                    <h1 class="page-title" id="nomAdherent">Détails de l'adhérent</h1>
+                    <p class="page-subtitle" id="contactAdherent">—</p>
+                </div>
+                <div>
+                    <a href="#" id="btnEdit" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Modifier
+                    </a>
+                </div>
+            </div>
+            <div class="card detail-card">
+                <h2 style="margin-bottom: 20px;">Details de l'adhérent</h2>
+                <div id="detailContent">
+                    <div class="loading">Chargement...</div>
+                </div>
+            </div>
+
+            <div class="card detail-card" style=" margin-top: 30px">
+                <h2 style="margin-bottom: 20px;">Historique des emprunts</h2>
+                <div id="historiqueContainer">
+                    <div class="loading">Chargement...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="../../js/layout.js"></script>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/adherents/view.js"></script>
+</body>
+</html>

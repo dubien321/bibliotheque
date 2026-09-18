@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord - BIBLIO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <div class="app-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <!-- En-tête de la page -->
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Tableau de bord</h1>
+                    <p class="page-subtitle">Vue d'ensemble de votre bibliothèque</p>
+                </div>
+                <button class="btn btn-secondary" onclick="chargerDashboard()">
+                    <i class="fas fa-sync-alt"></i> Actualiser
+                </button>
+            </div>
+
+            <!-- Cartes de statistiques -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon icon-blue">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Total livres</span>
+                        <span class="stat-value" id="statTotalLivres">—</span>
+                        <span class="stat-sub" id="statDisponibles">—</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon icon-green">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Adhérents</span>
+                        <span class="stat-value" id="statTotalAdherents">—</span>
+                        <span class="stat-sub">Membres actifs</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon icon-orange">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Emprunts en cours</span>
+                        <span class="stat-value" id="statEmpruntsEnCours">—</span>
+                        <span class="stat-sub">Non retournés</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon icon-red">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">En retard</span>
+                        <span class="stat-value" id="statEmpruntsRetard">—</span>
+                        <span class="stat-sub">À relancer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graphiques -->
+            <div class="charts-grid">
+                <!-- Graphique en ligne : emprunts par mois -->
+                <div class="card chart-card chart-wide">
+                    <div class="card-header">
+                        <h3 class="card-title">Évolution des emprunts</h3>
+                        <span class="card-hint">12 derniers mois</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="chartEmpruntsMois"></canvas>
+                    </div>
+                </div>
+
+                <!-- Graphique donut : répartition des livres -->
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Répartition des livres</h3>
+                    </div>
+                    <div class="chart-wrapper chart-donut">
+                        <canvas id="chartRepartition"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top 5 + Emprunts récents -->
+            <div class="grid-2">
+                <!-- Top 5 livres -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-trophy" style="color: #f59e0b;"></i> 
+                            Top 5 livres empruntés
+                        </h3>
+                    </div>
+                    <ul class="top-list" id="topLivres">
+                        <li class="loading">Chargement...</li>
+                    </ul>
+                </div>
+
+                <!-- Top 5 adhérents -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-star" style="color: #4a9eff;"></i> 
+                            Top 5 adhérents actifs
+                        </h3>
+                    </div>
+                    <ul class="top-list" id="topAdherents">
+                        <li class="loading">Chargement...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Emprunts récents -->
+            <div class="card" style="margin-top: 24px;">
+                <div class="card-header">
+                    <h3 class="card-title">Emprunts récents</h3>
+                    <a href="/pages/emprunts/emprunt.html" class="btn btn-secondary">
+                        Voir tous <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="table-container" style="border: none; box-shadow: none;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Livre</th>
+                                <th>Adhérent</th>
+                                <th>Date emprunt</th>
+                                <th>Retour prévu</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableEmpruntsRecents">
+                            <tr><td colspan="5" class="loading">Chargement...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <!-- Chart.js depuis CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <script src="../../js/layout.js"></script>
+    <script src="../../js/api.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

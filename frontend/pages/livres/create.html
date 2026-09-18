@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livre - BIBLIO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+    <div id="header-container"></div>
+
+    <div class="app-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <div class="page-header">
+                <div>
+                    <a href="/pages/livres/livre.html" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Retour à la liste
+                    </a>
+                    <h1 class="page-title" id="formTitle">Nouveau livre</h1>
+                    <p class="page-subtitle" id="formSubtitle">Ajouter un livre au catalogue</p>
+                </div>
+            </div>
+
+            <div class="card form-card">
+                <form id="livreForm">
+                    <div class="form-group">
+                        <label for="titre">Titre <span class="required">*</span></label>
+                        <input type="text" id="titre" name="titre" required placeholder="Ex: Les Misérables">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="id_auteur">Auteur <span class="required">*</span></label>
+                            <select id="id_auteur" name="id_auteur" required>
+                                <option value="">— Sélectionner un auteur —</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date_publication">Année de publication</label>
+                            <input type="number" id="date_publication" name="date_publication" 
+                                   placeholder="Ex: 1862" min="1000" max="2100">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="/pages/livres/livre.html" class="btn btn-secondary">
+                            Annuler
+                        </a>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-save"></i> Enregistrer
+                        </button>
+                    </div>
+
+                    <div id="formError" class="form-error" style="display: none;"></div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="../../js/layout.js"></script>
+    <script src="../../js/api.js"></script>
+    <script src="../../js/livres/create.js"></script>
+</body>
+</html>

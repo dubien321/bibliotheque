@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblio - Accueil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">
+                <div class="brand-mark"><i class="fas fa-book"></i></div>
+                <span>BIBLIO</span>
+            </div>
+
+            <div class="nav-actions">
+                <button class="btn btn-secondary" id="signupBtn" disabled>Inscription</button>
+                <button class="btn btn-primary" id="loginBtn">Connexion</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <span class="eyebrow"><i class="fas fa-building-columns"></i> Bibliothèque moderne</span>
+                <h1>Organisez votre bibliothèque avec simplicité.</h1>
+                <p>
+                    Gérez les livres, les auteurs, les adhérents et les emprunts depuis une interface claire
+                    et rapide pour suivre chaque activité en toute sérénité.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="btn btn-primary hero-cta" id="openLoginFromHero">
+                        <i class="fas fa-arrow-right-to-bracket"></i>
+                        Se connecter
+                    </button>
+                </div>
+
+                <div class="status" id="loggedStatus">
+                    <i class="fas fa-user-check"></i>
+                    <span>Connecté en tant qu’Admin</span>
+                </div>
+            </div>
+
+            <div class="hero-visual" aria-label="Image de la bibliothèque">
+                <div class="image-card"></div>
+                <div class="floating-card">
+                    <small>Bibliothèque</small>
+                    <strong>+1 250</strong>
+                    <span>ouvrages gérés</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <article class="feature">
+                <i class="fas fa-book-open"></i>
+                <h3>Catalogue</h3>
+                <p>Consultez rapidement les livres disponibles, les auteurs et leur statut.</p>
+            </article>
+
+            <article class="feature">
+                <i class="fas fa-users"></i>
+                <h3>Adhérents</h3>
+                <p>Suivez les membres de la bibliothèque et leurs emprunts en cours.</p>
+            </article>
+
+            <article class="feature">
+                <i class="fas fa-clipboard-check"></i>
+                <h3>Emprunts</h3>
+                <p>Gérez les retours, les dates prévues et les situations en retard.</p>
+            </article>
+        </section>
+    </main>
+
+    <div class="modal" id="loginModal" aria-hidden="true">
+        <div class="modal-card">
+            <button class="close-modal" id="closeModal" aria-label="Fermer">×</button>
+            <h2>Connexion</h2>
+            <p>Accédez à l’espace administration</p>
+
+            <form id="loginForm" class="login-form">
+                <div class="field">
+                    <label for="loginEmail">Email</label>
+                    <input id="loginEmail" name="email" type="email" value="admin@biblio.cg" required>
+                </div>
+
+                <div class="field">
+                    <label for="loginPassword">Mot de passe</label>
+                    <input id="loginPassword" name="password" type="password" value="admin1234" required>
+                </div>
+
+                <div id="loginMessage" class="form-message" aria-live="polite"></div>
+
+                <button type="submit" class="btn btn-primary">Se connecter</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    margin-left: var(--sidebar-width);
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.footer strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.footer-version {
+    padding: 3px 10px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .footer { margin-left: 0; padding: 16px; }
+}
